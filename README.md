@@ -22,6 +22,7 @@ We have used a resnet v2 with depth 56 as the base model. A classifier with 14 u
 kaggle notebook : https://www.kaggle.com/abhinavjain02/chest-x-ray-disease-classification
 
 This work has been inspired from :
+
 https://www.kaggle.com/kmader/train-simple-xray-cnn
 
 https://www.coursera.org/learn/ai-for-medical-diagnosis/home/welcome
