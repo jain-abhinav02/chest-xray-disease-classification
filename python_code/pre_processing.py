@@ -1,5 +1,7 @@
 import os
 import pandas as pd
+import matplotlib.pyplot as plt 
+import numpy as np
 
 input_data_path=os.path.join('..','input','data')
 stored_data_path = os.path.join('..','input','resnet-weights')

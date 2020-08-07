@@ -2,9 +2,13 @@ from tensorflow.keras.preprocessing.image import ImageDataGenerator
 import tensorflow.keras.backend as K
 from tensorflow.keras.callbacks import ModelCheckpoint
 from model import resnet_v2
+import pandas as pd
+import numpy as np
 
 #creating an Image Data generator
 IMG_SIZE = (128, 128)
+all_labels = ['Atelectasis', 'Cardiomegaly', 'Consolidation', 'Edema', 'Effusion', 'Emphysema', 'Fibrosis', 'Hernia', 'Infiltration', 'Mass', 'No Finding', 'Nodule', 'Pleural_Thickening', 'Pneumonia', 'Pneumothorax']
+train_df = pd.read_csv('../dataset/train_df.csv')
 core_idg = ImageDataGenerator(rescale=1.0/255.0, validation_split = 0.06)
 
 # obtaing the training images using the above generator
@@ -54,7 +58,6 @@ epsilon=1e-7
 
 # weighted loss function to handle class imbalance
 def weighted_loss(y_true, y_pred):
-    loss = 0.0
     loss_pos = -1 * K.sum( weights_pos * y_true * K.log(y_pred + epsilon), axis=-1)
     loss_neg = -1 * K.sum( weights_neg * (1 - y_true) * K.log(1 - y_pred + epsilon) ,axis=-1)
     return (loss_pos+loss_neg)/len(all_labels)

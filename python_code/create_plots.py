@@ -3,8 +3,8 @@ import numpy as np
 import pandas as pd
 import os
 
-input_data_path=os.path.join('..','input','data')
-stored_data_path = os.path.join('..','input','resnet-weights')
+input_data_path=os.path.join('..','dataset')
+stored_data_path = os.path.join('..','dataset')
 csv_filename='Data_Entry_2017.csv'
 all_xray_df = pd.read_csv(os.path.join(stored_data_path,csv_filename))
 

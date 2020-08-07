@@ -1,8 +1,34 @@
 from tensorflow.keras.preprocessing.image import img_to_array
+from tensorflow.keras.preprocessing.image import ImageDataGenerator
+import tensorflow as tf
 import cv2
+import pandas as pd 
+import numpy as np
+import matplotlib.pyplot as plt
 from tensorflow.keras import Model
+from model import resnet_v2
+from training import weighted_loss
 
-multi_disease_model.load_weights('../input/resnet-weights/weights_epoch_20.h5')
+IMG_SIZE = (128,128)
+all_labels = ['Atelectasis', 'Cardiomegaly', 'Consolidation', 'Edema', 'Effusion', 'Emphysema', 'Fibrosis', 'Hernia', 'Infiltration', 'Mass', 'No Finding', 'Nodule', 'Pleural_Thickening', 'Pneumonia', 'Pneumothorax']
+multi_disease_model = resnet_v2((128,128,1),(9*6)+2,len(all_labels))
+multi_disease_model.compile(optimizer = 'adam', loss = weighted_loss)
+multi_disease_model.load_weights('../model_weights/weights_epoch_20.h5')
+
+test_df = pd.read_csv('../dataset/test_df.csv')
+test_idg = ImageDataGenerator(rescale=1.0/255.0)
+test_gen = test_idg.flow_from_dataframe(
+        dataframe=test_df,
+        directory=None,
+        x_col='path',
+        y_col=all_labels,
+        target_size=(128, 128),
+        batch_size=64,
+        classes=all_labels,
+        class_mode='raw',
+        color_mode = "grayscale",
+        shuffle=False)
+
 pred_test = multi_disease_model.predict(test_gen, verbose = 1)
 
 img_idx = [] #list of random indices
@@ -42,7 +68,7 @@ def gen_heatmap(input_image,target_class):
     castGrads = tf.cast(grads > 0, "float32")
     guidedGrads = castConvOutputs * castGrads * grads  
     # compute the guided gradients
-    
+    epsilon = 1e-7
     convOutputs = convOutputs[0]
     guidedGrads = guidedGrads[0]
     weights = tf.reduce_mean(guidedGrads, axis=(0, 1))

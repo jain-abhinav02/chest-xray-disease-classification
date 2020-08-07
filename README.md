@@ -28,7 +28,7 @@ This is a major challenge in this medical diagnosis related datasets. The number
 
 Undersampling the majority class can reduce imbalance. Here, we have retained only 20% of those samples which do not have the presence of any disease.
 
-A weighted loss function can be used to account for this huge class imbalance. We can modify the usual log loss ( binary crossentropy loss ) by taking a weighted average of loss due to the positive class and negative class. The classes are weighted by the frequency of the other class.
+A weighted loss function can be used to account for this huge class imbalance. We can modify the usual log loss (binary crossentropy loss) by taking a weighted average of loss due to the positive class and negative class. The classes are weighted by the frequency of the other class.
 
 ---
 
