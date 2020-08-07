@@ -19,7 +19,7 @@ The results and weights of this notebook are uploaded here : https://www.kaggle.
 
 ### Introduction
 
-The dataset consists of chest xray scan labeled with 14 different types of diseases. The idea is to train a deep learning model to identify the presence of any disease. This problem falls under multi label classification. Our model consists of a number of resnet layers followed by a dense layer of 14 units.
+The dataset consists of chest xray scans labeled with 14 different types of diseases. The idea is to train a deep learning model to identify the presence of a disease. Since a patient may have symptoms of multiple diseases, this problem falls under multi label classification. The dataset consists of 112,120 x-ray images of 30,805 unique patients.
 
 ---
 
@@ -40,7 +40,9 @@ Hence, confusion matrix is of crucial importance. The threshold needs to be set 
 ---
 
 ### The model
-We have used a resnet v2 with depth 56 as the base model. A classifier with 14 units is placed on top of the base model. Sigmoid is used as the activation function for the output layer. The value output by sigmoid is interpreted as the probability of the occurence of that disease.
+We have used a resnet v2 with depth 56 as the base model. A classifier with 14 units is placed on top of the base model. Sigmoid is used as the activation function for the output layer. The value output by sigmoid is interpreted as the probability of the occurence of that disease. We would encourage you to experiment with other pre-trained networks as base models. One might also use weights of models pre-trained on image net dataset.
+
+The dataset is split randomly such that 80% is used for training, 5% for validation and 15% for testing.The neural network was trained for a total of 30 epochs. However, analysis of results on the validation set shows that model generalizes better at the end of 20th epoch. Hence, the weights at the end of 20th epoch is used for testing.
 
 ---
 
@@ -50,7 +52,7 @@ We have used a resnet v2 with depth 56 as the base model. A classifier with 14 u
 
 ### Training set statistics
 
-<img src="/visualisation/training_set_roc_curve_epoch_20.png" width="600" height="600">
+<img src="/visualisation/training_set_roc_curve_epoch_20.png" width="500" height="500">
 
 ### Test set statistics
 
@@ -61,9 +63,9 @@ We have used a resnet v2 with depth 56 as the base model. A classifier with 14 u
 | Mean AUC | 0.7055 |
 | Median AUC | 0.7021 |  
 
-ROC Curve
+* ROC Curve
 
-<img src="/visualisation/test_set_roc_curve.png" width="600" height="600">
+<img src="/visualisation/test_set_roc_curve.png" width="500" height="500">
 
 ---
 
@@ -88,8 +90,8 @@ It uses the gradients of any target concept flowing into the final convolutional
 ### References
 This work has been inspired from :
 
-https://www.kaggle.com/kmader/train-simple-xray-cnn
+* https://www.kaggle.com/kmader/train-simple-xray-cnn
 
-https://www.coursera.org/learn/ai-for-medical-diagnosis/home/welcome
+* https://www.coursera.org/learn/ai-for-medical-diagnosis/home/welcome
 
-https://www.pyimagesearch.com/2020/03/09/grad-cam-visualize-class-activation-maps-with-keras-tensorflow-and-deep-learning/
+* https://www.pyimagesearch.com/2020/03/09/grad-cam-visualize-class-activation-maps-with-keras-tensorflow-and-deep-learning/
