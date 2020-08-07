@@ -48,11 +48,11 @@ The dataset is split randomly such that 80% is used for training, 5% for validat
 
 ### Loss
 
-<img src="/visualisation/loss.png" width="600" height="400">
+<img src="/visualisation_images/loss.png" width="600" height="400">
 
 ### Training set statistics
 
-<img src="/visualisation/training_set_roc_curve_epoch_20.png" width="500" height="500">
+<img src="/visualisation_images/training_set_roc_curve_epoch_20.png" width="500" height="500">
 
 ### Test set statistics
 
@@ -65,7 +65,7 @@ The dataset is split randomly such that 80% is used for training, 5% for validat
 
 * ROC Curve
 
-<img src="/visualisation/test_set_roc_curve.png" width="500" height="500">
+<img src="/visualisation_images/test_set_roc_curve.png" width="500" height="500">
 
 ---
 
@@ -73,7 +73,7 @@ The dataset is split randomly such that 80% is used for training, 5% for validat
 Gradient weighted class activation mapping
 It uses the gradients of any target concept flowing into the final convolutional layer to produce a coarse localization map highlighting the important regions in the image for predicting the concept. Grad CAM is a great tool to visualize what the CNN model is learning.
 
-<img src="/visualisation/xray_samples.png" width="600" height="600">
+<img src="/visualisation_images/xray_samples.png" width="600" height="600">
 
 ---
 
