@@ -1,16 +1,21 @@
 # Chest X-Ray Disease Classification
 
+### Quick Links
 Kaggle dataset : https://www.kaggle.com/nih-chest-xrays/data
 
 Kaggle notebook : https://www.kaggle.com/abhinavjain02/chest-x-ray-disease-classification
 
 The results and weights of this notebook are uploaded here : https://www.kaggle.com/abhinavjain02/resnet-weights
 
+---
+
 ### Team members 
 
 1. [Abhinav Jain](https://github.com/jain-abhinav02)
 
 1. [Aayushman Mishra](https://github.com/mishraaayushman3)
+
+---
 
 ### Introduction
 
@@ -37,6 +42,8 @@ Hence, confusion matrix is of crucial importance. The threshold needs to be set 
 ### The model
 We have used a resnet v2 with depth 56 as the base model. A classifier with 14 units is placed on top of the base model. Sigmoid is used as the activation function for the output layer. The value output by sigmoid is interpreted as the probability of the occurence of that disease.
 
+---
+
 ### Loss
 
 <img src="/visualisation/loss.png" width="600" height="400">
@@ -58,11 +65,15 @@ ROC Curve
 
 <img src="/visualisation/test_set_roc_curve.png" width="600" height="600">
 
+---
+
 ### Grad CAM
 Gradient weighted class activation mapping
 It uses the gradients of any target concept flowing into the final convolutional layer to produce a coarse localization map highlighting the important regions in the image for predicting the concept. Grad CAM is a great tool to visualize what the CNN model is learning.
 
 <img src="/visualisation/xray_samples.png" width="600" height="600">
+
+---
 
 ### Key Learning
 
@@ -71,6 +82,8 @@ It uses the gradients of any target concept flowing into the final convolutional
 * ImageData Generator 
 * Receiver operating characteristic (ROC)
 * Gradient weighted class activation mapping (Grad CAM)
+
+---
 
 ### References
 This work has been inspired from :
